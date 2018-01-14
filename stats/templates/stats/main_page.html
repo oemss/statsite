@@ -1,8 +1,15 @@
 <html>
     <head>
-        <title>Test</title>
+        <title>An example</title>
     </head>
     <body>
-        <p>In progress!</p>
+        <div>
+            <form action="submit" method="post">
+                {% csrf_token %}
+                <input type="file" name="file"><br>
+                <!--<input type="text" name="info" size="150" ><br>-->
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </body>
 </html>

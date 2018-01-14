@@ -10,6 +10,7 @@ class Stat(models.Model):
     tag = models.CharField(max_length=1000)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    upload = models.FileField(upload_to='media/', default='')
 
     def publish(self):
         self.published_date = timezone.now()
@@ -17,4 +18,3 @@ class Stat(models.Model):
 
     def __str__(self):
         return self.name
-    
