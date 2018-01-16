@@ -3,5 +3,4 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.main_page, name='main_page'),
-    url(r'^submit', views.submit)
 ]

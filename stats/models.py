@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 class Stat(models.Model):
-    author = models.ForeignKey('auth.User',on_delete=models.DO_NOTHING)
+    author = models.CharField(max_length=200, default='anonymous')
     name = models.CharField(max_length=200)
     tag = models.CharField(max_length=1000)
     created_date = models.DateTimeField(default=timezone.now)

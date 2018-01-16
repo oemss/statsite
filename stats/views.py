@@ -5,35 +5,23 @@ from django.template.context_processors import csrf
 from django.urls import reverse
 from django import forms
 from .forms import UploadFileForm
+from stats.forms import DocumentForm
+from django.core.files.storage import FileSystemStorage
 
 
 def main_page(request):
-    return render(request, 'stats/main_page.html', {})
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        return render(request, 'stats/main_page.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
+    return render(request, 'stats/main_page.html')
 
 
 def handle_uploaded_file(f):
     with open('media/name.txt', 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-
-
-def submit(request):
-    # Если метод POST
-    if request.method == 'POST':
-        # Заполняем форму полученными данными
-        form = UploadFileForm(request.POST, request.FILES)
-        # Если данные валидны
-        print("asdasdas")
-        print(form.errors)
-        if form.is_valid():
-            # обрабатываем файл
-            print("dsad")
-            handle_uploaded_file(request.FILES)
-            # перенаправляем на другую страницу
-            return HttpResponseRedirect('admin')
-    # Если другой метод (обычно GET)
-    else:
-        form = UploadFileForm()
-    # Выводим форму загрузки
-    return redirect('/')
-
