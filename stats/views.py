@@ -7,7 +7,7 @@ from django import forms
 from .forms import UploadFileForm
 from stats.forms import DocumentForm
 from django.core.files.storage import FileSystemStorage
-
+import worker.main as main_f
 
 def main_page(request):
     if request.method == 'POST' and request.FILES['myfile']:
@@ -15,6 +15,7 @@ def main_page(request):
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
+        main_f.__main__(uploaded_file_url)
         return render(request, 'stats/main_page.html', {
             'uploaded_file_url': uploaded_file_url
         })

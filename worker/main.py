@@ -6,7 +6,7 @@ sys.setrecursionlimit(10000)
 
 result = 'result.txt'
 swap = 'swap.txt'
-input_text = 'out.txt'
+# input_text = 'out.txt'
 
 
 def eqlst(lst1, lst2):
@@ -101,7 +101,7 @@ def find_el(sp, sym):
 
 
 # Список всех предложений заканчивающихся на '.'
-def split_txt():
+def split_txt(input_text):
     with open(input_text) as file:
         split_text = list(map(lambda x: x.split(' '), map(lambda x: x.strip(' '), file.read().split('.'))))
         file.close()
@@ -122,9 +122,9 @@ def add2stat(lst, stat):
     return stat
 
 
-def get_result():
+def get_result(input_text):
     res = {}
-    for lst in split_txt():
+    for lst in split_txt(input_text):
         # lst = list(map(lambda x: int(x),lst))
         # temp = create_subseq(3, [], lst)
         temp = blistinarow(2, 1, lst)
@@ -135,13 +135,6 @@ def get_result():
     return res
 
 
-
-buildpos.createposfile(1)
-resul = get_result()
-# ress = OrderedDict(sorted(get_result().items(), key = lambda t: t[1]))
-# plot.createplot(resul, 2, "blue")
-buildpos.createposfile(2)
-resul = get_result()
-# plot.createplot(resul, 2, "red")
-# cs.create(resul)
-# plot.pltshow()
+def __main__(args):
+    return get_result(buildpos.createposfile(args))
+    # return buildpos.createposfile(args)

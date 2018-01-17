@@ -1,3 +1,4 @@
+import os
 import pymorphy2
 
 
@@ -66,16 +67,23 @@ morph = pymorphy2.MorphAnalyzer()
 
 def createposfile(file_name):
     temp = ''
-    infile = open(file_name, 'r')
-    outfile = open("out_" + file_name, 'w')
+    cur_dir = os.path.abspath(os.curdir)
+    infile = open(cur_dir + file_name, 'r')
+    outfile = open(cur_dir + file_name.replace('.', '_out.'), 'w')
+    log = open(cur_dir + file_name.replace('.', '_log.'), 'w')
     for char in infile.read():
         if char.isalpha():
             temp += char
         else:
-            if temp != '':
+            if temp != ' ' and temp != '':
+                log.write(temp + " : " + str(possw.get(morph.parse(temp)[0].tag.POS)) +'\n')
                 outfile.write(' ')
                 outfile.write(str(possw.get(morph.parse(temp)[0].tag.POS)))
                 temp = ''
             if ord(char) > 57 & ord(char) < 48:
                 outfile.write(symbol.get(char, ''))
+    infile.close()
+    outfile.close()
+    log.close()
+    return cur_dir + file_name.replace('.', '_out.')
 
