@@ -2,12 +2,7 @@ from django import forms
 from stats.models import Stat
 
 
-class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file = forms.FileField()
-
-
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Stat
-        fields = ('author', 'name', 'tag', 'upload')
+        fields = ('upload',)

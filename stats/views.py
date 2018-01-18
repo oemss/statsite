@@ -4,25 +4,32 @@ from django.shortcuts import render, render_to_response, redirect
 from django.template.context_processors import csrf
 from django.urls import reverse
 from django import forms
-from .forms import UploadFileForm
 from stats.forms import DocumentForm
 from django.core.files.storage import FileSystemStorage
 import worker.main as main_f
 
+
 def main_page(request):
-    if request.method == 'POST' and request.FILES['myfile']:
-        myfile = request.FILES['myfile']
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
-        main_f.__main__(uploaded_file_url)
-        return render(request, 'stats/main_page.html', {
-            'uploaded_file_url': uploaded_file_url
-        })
-    return render(request, 'stats/main_page.html')
-
-
-def handle_uploaded_file(f):
-    with open('media/name.txt', 'wb+') as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)
+    # if request.method == 'POST' and request.FILES['myfile']:
+    #     myfile = request.FILES['myfile']
+    #     fs = FileSystemStorage()
+    #     filename = fs.save(myfile.name, myfile)
+    #     uploaded_file_url = fs.url(filename)
+    #     main_f.__main__(uploaded_file_url)
+    #     return render(request, 'stats/main_page.html', {
+    #         'uploaded_file_url': uploaded_file_url
+    #     })
+    # return render(request, 'stats/main_page.html')
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        print(form.is_valid())
+        if form.is_valid():
+            form.save()
+            myfile = request.FILES
+            main_f.__main__(form.upload)
+            return redirect('/')
+    else:
+        form = DocumentForm()
+    return render(request, 'stats/main_page.html', {
+        'form': form
+    })

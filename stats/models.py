@@ -5,16 +5,19 @@ from django.utils import timezone
 
 
 class Stat(models.Model):
-    author = models.CharField(max_length=200, default='anonymous')
-    name = models.CharField(max_length=200)
-    tag = models.CharField(max_length=1000)
-    created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
-    upload = models.FileField(upload_to='media/', default='')
+    author = models.CharField(blank=True, max_length=200, default='anonymous')
+    name = models.CharField(blank=True, max_length=200)
+    tag = models.CharField(blank=True, max_length=1000,)
+    upload = models.FileField(upload_to='')
 
-    def publish(self):
+    def publish(self,author, name, tag, file):
         self.published_date = timezone.now()
+        self.author = author
+        self.name = name
+        self.tag = tag
+        self.upload.save(name, file)
         self.save()
+
 
     def __str__(self):
         return self.name
