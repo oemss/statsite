@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Stat
+from .models import analyz
 
 # Register your models here.
 
-admin.site.register(Stat)
+admin.site.register(analyz)

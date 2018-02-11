@@ -26,7 +26,8 @@ def main_page(request):
         if form.is_valid():
             form.save()
             myfile = request.FILES
-            main_f.__main__(form.upload)
+            print(myfile.name)
+            main_f.__main__(myfile)
             return redirect('/')
     else:
         form = DocumentForm()

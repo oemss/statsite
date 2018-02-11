@@ -1,12 +1,11 @@
 import sys
+from collections import OrderedDict
 
 from worker import buildpos
 
 sys.setrecursionlimit(10000)
 
-result = 'result.txt'
-swap = 'swap.txt'
-# input_text = 'out.txt'
+out_res = ""
 
 
 def eqlst(lst1, lst2):
@@ -131,7 +130,11 @@ def get_result(input_text):
         # temp = sortlist(temp)
         for tplst in temp:
             res = add2stat(tuple(tplst), res).copy()
-    print(res)
+    sortdict = OrderedDict(sorted(res.items()))
+    file = open(input_text.replace('.', '_res.', 'w'))
+    for el in sortdict.items():
+        file.write(el[1] + "   :   " + el[2])
+    file.close()
     return res
 
 
