@@ -123,7 +123,7 @@ def add2stat(lst, stat):
 
 def get_result(input_text):
     res = {}
-    for lst in split_txt(input_text):
+    for lst in input_text[1]:
         # lst = list(map(lambda x: int(x),lst))
         # temp = create_subseq(3, [], lst)
         temp = blistinarow(2, 1, lst)

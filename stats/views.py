@@ -9,6 +9,9 @@ from django.core.files.storage import FileSystemStorage
 import worker.main as main_f
 
 
+import pprint
+
+
 def main_page(request):
     # if request.method == 'POST' and request.FILES['myfile']:
     #     myfile = request.FILES['myfile']
@@ -26,8 +29,9 @@ def main_page(request):
         if form.is_valid():
             form.save()
             myfile = request.FILES
-            print(myfile.name)
-            main_f.__main__(myfile)
+            print("DSDSDSDDDDDDDDDDDDDDDDDDDDDDDDDD ")
+            print(request.FILES.name)
+            # main_f.__main__(str(myfile['upload']))
             return redirect('/')
     else:
         form = DocumentForm()
