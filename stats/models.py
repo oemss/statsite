@@ -37,6 +37,13 @@ class analyz(models.Model):
     def filename(self):
         return os.path.basename(self.upload.name)
 
+    def addfiles(self):
+        path = os.path.abspath(os.curdir) + "\\media\\"
+        name = os.path.basename(self.upload.name)
+        log = open(path + name.replace('.', '_log.'))
+        out = open(path + name.replace('.', '_out.'))
+        self.log.save(name.replace('.', '_log.'), log)
+        self.out.save(name.replace('.', '_out.'), out)
 
 class pfr(models.Model):
     pfr = models.CharField(blank=True, max_length=1000)

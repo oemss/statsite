@@ -1,3 +1,4 @@
+import os
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response, redirect
 # Create your views here.
@@ -37,6 +38,7 @@ def main_page(request):
             request.session['res_url'] = '/media/' + result_url.replace('.', '_res.')
             request.session['out_url'] = '/media/' + result_url.replace('.', '_out.')
             # return redirect('/')
+            f.addfiles()
             return redirect('stats/result.html')
     else:
         form = DocumentForm()

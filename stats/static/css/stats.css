@@ -1,0 +1,26 @@
+.btn {		//Задание общего стиля для кнопки
+	height:30px;
+	border-color:#c2e254 #9bb838 #9bb838 #c2e254;
+	border-style:solid;
+	border-width:1px;
+	background:#c2e254;
+	cursor:pointer;
+	}
+	.btn:hover {	//Стиль кнопки при новедении на него курсора
+	border-color:#FFCC66 #FFFF99 #FFFF99 #FFCC66;
+	border-style:solid;
+	border-width:1px;
+	background:#FFFF99;
+	}
+	.btn:focus {	//Стиль кнопки, когда она в фокусе
+	background:#ddd;
+	border-color:#ddd #333 #333 #ddd;
+	border-style:solid;
+	border-width:1px;
+	}
+	.btn:active {		//Стиль кнопки при нажатии
+	background:#ff0000;
+	border-color:#ddd #333 #333 #ddd;
+	border-style:solid;
+	border-width:1px;
+	}
