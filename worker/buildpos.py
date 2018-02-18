@@ -89,17 +89,21 @@ morph = pymorphy2.MorphAnalyzer()
 
 
 def createposfile(file_name):
-    cur_dir = os.path.abspath(os.curdir)
+    cur_dir = os.path.abspath(os.curdir) + "\\media\\"   #.replace('worker','media\\')
     infile = open(cur_dir + file_name, 'r')
     outfile = open(cur_dir + file_name.replace('.', '_out.'), 'w')
     log = open(cur_dir + file_name.replace('.', '_log.'), 'w')
     temp = re.sub('\s+', ' ', (re.sub('[^а-яА-Я\s]', '', infile.read()))).split(' ')
+    temp = list(filter(lambda x: x != '', temp))
+    res = []
     for el in temp:
-        print(el)
-    for el in temp:
-        log.write(el + " : " + str(possw.get(morph.parse(el)[0].tag.POS)) + '\n')
-        outfile.write(str(possw.get(morph.parse(el)[0].tag.POS)))
+        x = str(possw.get(morph.parse(el)[0].tag.POS))
+        log.write(el + " : " + x + '\n')
+        outfile.write(x + ' ')
+        res += [x]
     infile.close()
     outfile.close()
     log.close()
-    return [cur_dir + file_name.replace('.', '_out.'), temp]
+    return [cur_dir + file_name, res]
+
+# createposfile("Jako_pomnishi_ego.txt")

@@ -123,17 +123,16 @@ def add2stat(lst, stat):
 
 def get_result(input_text):
     res = {}
-    for lst in input_text[1]:
-        # lst = list(map(lambda x: int(x),lst))
-        # temp = create_subseq(3, [], lst)
-        temp = blistinarow(2, 1, lst)
-        # temp = sortlist(temp)
-        for tplst in temp:
-            res = add2stat(tuple(tplst), res).copy()
+    lst = input_text[1]
+    # temp = create_subseq(2, [], lst)
+    temp = blistinarow(2, 1, lst)
+    # temp = sortlist(temp)
+    for tplst in temp:
+        res = add2stat(tuple(tplst), res).copy()
     sortdict = OrderedDict(sorted(res.items()))
-    file = open(input_text.replace('.', '_res.', 'w'))
+    file = open(input_text[0].replace('.', '_res.'), 'w')
     for el in sortdict.items():
-        file.write(el[1] + "   :   " + el[2])
+        file.write(str(el[0]) + "   :   " + str(el[1]) + '\n')
     file.close()
     return res
 
@@ -141,3 +140,4 @@ def get_result(input_text):
 def __main__(args):
     return get_result(buildpos.createposfile(args))
     # return buildpos.createposfile(args)
+

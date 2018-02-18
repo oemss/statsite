@@ -11,6 +11,8 @@ import worker.main as main_f
 
 import pprint
 
+from stats.models import analyz
+
 
 def main_page(request):
     # if request.method == 'POST' and request.FILES['myfile']:
@@ -27,14 +29,29 @@ def main_page(request):
         form = DocumentForm(request.POST, request.FILES)
         print(form.is_valid())
         if form.is_valid():
-            form.save()
-            myfile = request.FILES
-            print("DSDSDSDDDDDDDDDDDDDDDDDDDDDDDDDD ")
-            print(request.FILES.name)
-            # main_f.__main__(str(myfile['upload']))
-            return redirect('/')
+            f = form.save()
+            result_url = f.filename()
+            main_f.__main__(result_url)
+            request.session['src_url'] = '/media/' + result_url
+            request.session['log_url'] = '/media/' + result_url.replace('.', '_log.')
+            request.session['res_url'] = '/media/' + result_url.replace('.', '_res.')
+            request.session['out_url'] = '/media/' + result_url.replace('.', '_out.')
+            # return redirect('/')
+            return redirect('stats/result.html')
     else:
         form = DocumentForm()
     return render(request, 'stats/main_page.html', {
         'form': form
     })
+
+
+def result(request):
+    return render(request, 'stats/result.html', {'src_url': request.session['src_url'],
+                                                 'log_url': request.session['log_url'],
+                                                 'res_url': request.session['res_url'],
+                                                 'out_url': request.session['out_url']})
+
+
+def get_db(request):
+    test = analyz.objects.all()
+    return

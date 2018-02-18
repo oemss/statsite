@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+</head>
+<body>
+    {% csrf_token %}
+
+    {% if src_url %}
+        <p>Файл загружен: <a href="{{ src_url }}">{{ src_url }}</a></p>
+        <p>Результаты: <a href="{{ res_url }}">{{ res_url }}</a></p>
+        <p>Лог: <a href="{{ log_url }}">{{ log_url }}</a></p>
+        <p>Выходные данные: <a href="{{ out_url }}">{{ out_url }}</a></p>
+    {% else %}
+        <p>Nothing to show</p>
+    {% endif %}
+</body>
+</html>
