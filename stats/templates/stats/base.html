@@ -1,9 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
 <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stats.css' %}"/>
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    <a href="/admin" class="c">Комментировать</a>
     {% block content %}{% endblock %}
 </body>
 </html>
