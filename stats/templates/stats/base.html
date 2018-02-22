@@ -3,10 +3,19 @@
 <head>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/stats.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <a href="/admin" class="c">Комментировать</a>
-    {% block content %}{% endblock %}
+    <div id="header">
+        <div id="branding">
+            {% block branding %}{% endblock %}
+        </div>
+        <div id="user-tools">
+            <a href="/admin">Управление</a> /
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>

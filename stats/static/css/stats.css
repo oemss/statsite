@@ -1,38 +1,39 @@
-.btn {		//Задание общего стиля для кнопки
-	height:30px;
-	border-color:#c2e254 #9bb838 #9bb838 #c2e254;
-	border-style:solid;
-	border-width:1px;
-	background:#c2e254;
-	cursor:pointer;
-	}
-	.btn:hover {	//Стиль кнопки при новедении на него курсора
-	border-color:#FFCC66 #FFFF99 #FFFF99 #FFCC66;
-	border-style:solid;
-	border-width:1px;
-	background:#FFFF99;
-	}
-	.btn:focus {	//Стиль кнопки, когда она в фокусе
-	background:#ddd;
-	border-color:#ddd #333 #333 #ddd;
-	border-style:solid;
-	border-width:1px;
-	}
-	.btn:active {		//Стиль кнопки при нажатии
-	background:#ff0000;
-	border-color:#ddd #333 #333 #ddd;
-	border-style:solid;
-	border-width:1px;
-	}
 	.c {
     border: 1px solid #333; /* Рамка */
     display: inline-block;
     padding: 5px 15px; /* Поля */
     text-decoration: none; /* Убираем подчёркивание */
     color: #000; /* Цвет текста */
-  }
+    }
    .c:hover {
     box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
-    background: linear-gradient(to bottom, #fcfff4, #e9e9ce); /* Градиент */
+    background:   #B9D1E7; /* Градиент */
     color: #a00;
-   }
+    }
+    #branding {
+    float: left;
+    }
+
+    #branding h1 {
+    padding: 0;
+    margin: 0 20px 0 0;
+    font-weight: 300;
+    font-size: 24px;
+    color: #f5dd5d;
+    }
+
+    #branding h1, #branding h1 a:link, #branding h1 a:visited {
+        color: #f5dd5d;
+    }
+
+    #branding h2 {
+        padding: 0 10px;
+        font-size: 14px;
+        margin: -8px 0 8px 0;
+        font-weight: normal;
+        color: #ffc;
+    }
+
+    #branding a:hover {
+        text-decoration: none;
+    }
