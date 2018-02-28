@@ -1,25 +1,25 @@
 	.c {
-    border: 1px solid #333; /* Рамка */
-    display: inline-block;
-    padding: 5px 15px; /* Поля */
-    text-decoration: none; /* Убираем подчёркивание */
-    color: #000; /* Цвет текста */
+        border: 1px solid #333; /* Рамка */
+        display: inline-block;
+        padding: 5px 15px; /* Поля */
+        text-decoration: none; /* Убираем подчёркивание */
+        color: #000; /* Цвет текста */
     }
-   .c:hover {
-    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
-    background:   #B9D1E7; /* Градиент */
-    color: #a00;
+    .c:hover {
+        box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
+        background:   #B9D1E7; /* Градиент */
+        color: #a00;
     }
     #branding {
-    float: left;
+        float: left;
     }
 
     #branding h1 {
-    padding: 0;
-    margin: 0 20px 0 0;
-    font-weight: 300;
-    font-size: 24px;
-    color: #f5dd5d;
+        padding: 0;
+        margin: 0 20px 0 0;
+        font-weight: 300;
+        font-size: 24px;
+        color: #f5dd5d;
     }
 
     #branding h1, #branding h1 a:link, #branding h1 a:visited {
@@ -36,4 +36,28 @@
 
     #branding a:hover {
         text-decoration: none;
+    }
+    #content{
+        margin: 0;
+        position: absolute;
+        /* top: 50%;*/
+        margin-left: 10%;
+    }
+    @keyframes move {
+        from,
+        to {
+        top: 0;
+        left: 0;
+        }
+        25%,
+        75% {top: 100%;}
+        50% {top: 50%;}
+    }
+    #leftcol{
+        float: left;
+        width: 10%;
+        height: 93%;
+        position: absolute;
+        overflow: hidden;
+        background: #B9D1E7;
     }

@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Title</title>
-</head>
-<body>
+{% extends "stats/base.html" %}
+{% block title %} Результаты {% endblock %}
+{% block branding %}<h1 id="site-name"><a href="/result">Результаты</a></h1>{% endblock %}
+{% block content %}
     {% csrf_token %}
 
     {% if src_url %}
@@ -12,7 +10,6 @@
         <p>Лог: <a href="{{ log_url }}">{{ log_url }}</a></p>
         <p>Выходные данные: <a href="{{ out_url }}">{{ out_url }}</a></p>
     {% else %}
-        <p>Nothing to show</p>
+        <h1><a href="/">Результатов нет, загрузите на главной странице</a></h1>
     {% endif %}
-</body>
-</html>
+{% endblock %}

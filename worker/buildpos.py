@@ -89,7 +89,7 @@ morph = pymorphy2.MorphAnalyzer()
 
 
 def createposfile(file_name):
-    cur_dir = os.path.abspath(os.curdir) + "\\media\\"   #.replace('worker','media\\')
+    cur_dir = os.path.abspath(os.curdir) + os.sep +  "media" + os.sep   #.replace('worker','media\\')
     infile = open(cur_dir + file_name, 'r')
     outfile = open(cur_dir + file_name.replace('.', '_out.'), 'w')
     log = open(cur_dir + file_name.replace('.', '_log.'), 'w')

@@ -15,7 +15,14 @@
             <a href="/admin">Управление</a> /
         </div>
     </div>
-    {% block content %}
-    {% endblock %}
+    <div id="leftcol">
+        <div id="menu">
+            <a href="/">Главная страница</a>
+        </div>
+    </div>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>
